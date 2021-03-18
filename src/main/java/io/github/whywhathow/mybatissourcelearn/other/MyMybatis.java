@@ -1,20 +1,20 @@
 package io.github.whywhathow.mybatissourcelearn.other;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.sql.visitor.functions.If;
 import io.github.whywhathow.mybatissourcelearn.entity.other.User;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import javax.sql.DataSource;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Proxy;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,7 +49,6 @@ public class MyMybatis {
      * 2. 与数据库进行交互, 获取结果集
      * 3. 处理结果集, 与返回值绑定, ()未做
      * 4. 返回给用户
-     *
      * @return
      */
     UserMapper getUsermapper() {
@@ -75,13 +74,16 @@ public class MyMybatis {
                         }
                         return null;
                     }
-
-
                 });
         return mapper;
-
     }
 
+    /**
+     *  解析方法参数, 将方法参数通过map的形式返回
+     * @param args 方法 参数
+     * @param method 具体方法
+     * @return map
+     */
     private Map<String, Object> parseMethodArgs(Object[] args, Method method) {
         Map<String, Object> map = new HashMap<String, Object>();
         Parameter[] parameters = method.getParameters();
@@ -111,7 +113,6 @@ public class MyMybatis {
             ResultSet resultSet = preparedStatement.executeQuery();
             // 处理结果集, 对结果集 与xml方法 返回值做映射,
             result = resolveResultSet(resultSet, returnType);
-
 //            preparedStatement
         } catch (Exception e) {
             e.printStackTrace();
