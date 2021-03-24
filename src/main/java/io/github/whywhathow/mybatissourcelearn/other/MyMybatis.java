@@ -109,7 +109,9 @@ public class MyMybatis {
 
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.executeQuery()
 //            preparedStatement.set
+//            preparedStatement.setInt(, );
             ResultSet resultSet = preparedStatement.executeQuery();
             // 处理结果集, 对结果集 与xml方法 返回值做映射,
             result = resolveResultSet(resultSet, returnType);
