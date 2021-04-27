@@ -11,3 +11,6 @@ MyBatis 项目源码分析 案例
 *  MyBatis - 00 - 自定义实现 MyBatis 查询过程 (简略化处理)
 *  MyBatis -00 - 自定义实现 Mybatis 责任链模式
 *  关于作者在 ' 聊聊 MyBatis 缓存机制 ' 中一级缓存执行流程的一些质疑
+
+## 我的源码文档
+[mybatis-3.5.5-annotationed](/src/docs/mybatis-3.5.5-sources-Annotationed.zip)
