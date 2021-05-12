@@ -42,13 +42,6 @@ public class CreateSqlSession {
 
 
 
-    /**
-     * @Author whywhathow
-     * @Description: //TODO
-     * @Date  2020/11/14
-     * @Param []
-     * @return javax.sql.DataSource
-     **/
 
     private static DataSource getDataSource()  {
         DruidDataSource dataSource= new DruidDataSource();
